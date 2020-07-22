@@ -72,3 +72,28 @@ for(i=0;i<data.length;i++){
     row.append("td").text(comments[i]);
 
 };
+
+var button = d3.select("#filter-btn")
+
+var userinput= d3.select('#datetime')
+
+
+
+button.on("click", filterClick);
+
+userinput.on("change", function(){
+    var newText=d3.event.target.value;
+    console.log(newText.split("").reverse().join(""));
+    
+});
+
+function filterClick() {
+    d3.event.preventDefault();
+    var dateEntry = (d3.select(userinput));
+    var inputValue = userinput.property("value");
+    var filteredTable=data.filter(entry => entry.datetime === inputValue);
+    console.log(filteredTable);
+    console.log(d3.event.target);
+
+    
+};
