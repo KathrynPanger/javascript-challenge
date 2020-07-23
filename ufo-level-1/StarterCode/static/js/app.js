@@ -10,6 +10,7 @@ var shape = [];
 var durationMinutes = [];
 var comments = [];
 
+function objectToArray(){
 // Iterate through each recipe object
 data.forEach((item) => {
 
@@ -45,23 +46,14 @@ data.forEach((item) => {
    });
 });
 
+};
+objectToArray(data)
+
 var tbody= d3.select("tbody");
 var collumn=tbody.append("tr");
 
-
-// for(i=0;i<1;i++){
-//     row.append("td").text(datetime[i]);
-//     row.append("td").text(city[i]);
-//     row.append("td").text(state[i]);
-//     row.append("td").text(country[i]);
-//     row.append("td").text(shape[i]);
-//     row.append("td").text(durationMinutes[i]);
-//     row.append("td").text(comments[i]);
-//     collumn.append("tr")
-
-// }
-
-for(i=0;i<data.length;i++){
+function maketable(somedata) {
+for(i=0;i<somedata.length;i++){
     var row = tbody.append("tr");
     row.append("td").text(datetime[i]);
     row.append("td").text(city[i]);
@@ -72,6 +64,9 @@ for(i=0;i<data.length;i++){
     row.append("td").text(comments[i]);
 
 };
+};
+
+maketable(data);
 
 var button = d3.select("#filter-btn")
 
@@ -89,11 +84,13 @@ userinput.on("change", function(){
 
 function filterClick() {
     d3.event.preventDefault();
+    //var removeit= d3.selectAll("tr").html("")
     var dateEntry = (d3.select(userinput));
     var inputValue = userinput.property("value");
     var filteredTable=data.filter(entry => entry.datetime === inputValue);
     console.log(filteredTable);
-    console.log(d3.event.target);
+    maketable(filteredTable);
 
-    
+
+    ;
 };
