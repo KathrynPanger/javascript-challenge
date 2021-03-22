@@ -1,7 +1,6 @@
 // from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
 var datetime = [];
 var city = [];
 var state = [];
